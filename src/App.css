@@ -1,3 +1,8 @@
+html, body {
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
 body {
   background: #101820;
   color: #f7e7ce;
@@ -782,5 +787,54 @@ body {
     flex-direction: column;
     gap: 1.5rem;
     padding: 1.5rem 0.5rem 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar, .content, .about-terminal, .skills-matrix-container, .projects-matrix-box, .contact-box {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    margin: 0 auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .about-info-cards, .skills-list, .projects-matrix-cards {
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.7rem !important;
+    align-items: stretch !important;
+  }
+  .about-info-cards .info-card, .skills-list .skill-bar-row, .projects-matrix-cards .project-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    font-size: 0.98rem;
+    padding: 0.5rem 0.7rem;
+    box-sizing: border-box !important;
+  }
+  .project-card-link {
+    height: 140px;
+  }
+  .contact-form input, .contact-form textarea {
+    font-size: 0.98rem;
+    padding: 0.5rem 0.7rem;
+    box-sizing: border-box !important;
+  }
+}
+@media (max-width: 400px) {
+  .navbar ul {
+    gap: 0.5rem;
+  }
+  .logo {
+    font-size: 1rem;
+  }
+  .about-bio-title, .skills-header, .projects-matrix-title-main {
+    font-size: 1rem;
+  }
+  .about-info-cards .info-card, .skills-list .skill-bar-row, .projects-matrix-cards .project-card {
+    font-size: 0.92rem;
+    padding: 0.3rem 0.4rem;
   }
 }
