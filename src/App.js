@@ -350,16 +350,59 @@ function Contact() {
 
 function Navbar() {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.navbar')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   return (
     <nav className="navbar">
+      {/* Hamburger Menu Button - Far Left */}
+      <div className="hamburger" onClick={toggleMenu}>
+        <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+      </div>
+
+      {/* Logo - Center */}
       <div className="logo">EMM</div>
-      <ul>
-        <li><Link to="/" className={location.pathname === "/" ? "active" : ""}><FaHome style={{verticalAlign:'middle', marginRight:6}}/>Home</Link></li>
-        <li><Link to="/about" className={location.pathname === "/about" ? "active" : ""}><FaUser style={{verticalAlign:'middle', marginRight:6}}/>About</Link></li>
-        <li><Link to="/skills" className={location.pathname === "/skills" ? "active" : ""}><FaCode style={{verticalAlign:'middle', marginRight:6}}/>Skills</Link></li>
-        <li><Link to="/projects" className={location.pathname === "/projects" ? "active" : ""}><FaProjectDiagram style={{verticalAlign:'middle', marginRight:6}}/>Projects</Link></li>
-        <li><Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}><FaEnvelope style={{verticalAlign:'middle', marginRight:6}}/>Contact</Link></li>
+
+      {/* Navigation Menu */}
+      <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+        <li><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={closeMenu}><FaHome style={{verticalAlign:'middle', marginRight:6}}/>Home</Link></li>
+        <li><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={closeMenu}><FaUser style={{verticalAlign:'middle', marginRight:6}}/>About</Link></li>
+        <li><Link to="/skills" className={location.pathname === "/skills" ? "active" : ""} onClick={closeMenu}><FaCode style={{verticalAlign:'middle', marginRight:6}}/>Skills</Link></li>
+        <li><Link to="/projects" className={location.pathname === "/projects" ? "active" : ""} onClick={closeMenu}><FaProjectDiagram style={{verticalAlign:'middle', marginRight:6}}/>Projects</Link></li>
+        <li><Link to="/contact" className={location.pathname === "/contact" ? "active" : ""} onClick={closeMenu}><FaEnvelope style={{verticalAlign:'middle', marginRight:6}}/>Contact</Link></li>
       </ul>
+      
       <div className="nav-icons">{/* Add social icons here if needed */}</div>
     </nav>
   );
