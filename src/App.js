@@ -191,6 +191,36 @@ const projectData = [
     url: "https://tech-connect-blond.vercel.app/",
     desc: "A networking platform connecting tech enthusiasts and professionals.",
   },
+  {
+    name: "Cudberry Redesign",
+    type: ["frontend"],
+    url: "https://cudberry.vercel.app/",
+    desc: "A complete website redesign for Cudberry using React, focusing on modern UI/UX principles and responsive design.",
+  },
+  {
+    name: "ZUWIB Organization",
+    type: ["frontend"],
+    url: "https://zuwmib.vercel.app/",
+    desc: "Website for Zimbabwe Unrecognised Men and Women in Business, founded by Primrose January, empowering entrepreneurs.",
+  },
+  {
+    name: "Smart Appointment Scheduler",
+    type: ["frontend", "backend", "fullstack"],
+    url: "https://schedule-appointments-tawny.vercel.app/",
+    desc: "Inspired by the need to streamline scheduling processes, this smart appointment system helps businesses manage bookings efficiently.",
+  },
+  {
+    name: "Daniel Portfolio",
+    type: ["frontend"],
+    url: "https://daniel-smoky-delta.vercel.app/",
+    desc: "A portfolio website created for a colleague at school, showcasing collaborative development skills and teamwork.",
+  },
+  {
+    name: "Food Vibe",
+    type: ["frontend"],
+    url: "https://food-lovat-iota.vercel.app/",
+    desc: "A food-themed project inspired by a coding challenge from my instructor, demonstrating creative problem-solving and technical skills.",
+  },
 ];
 
 const projectFilters = [
